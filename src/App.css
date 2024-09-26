@@ -88,6 +88,7 @@ input[type="text"] {
         max-height: 100vh;
     }
 }
+
 @media (max-width: 490px) {
     .temp{
         display: flex;
@@ -99,5 +100,9 @@ input[type="text"] {
         flex-wrap: wrap;
         justify-content: center;
     }
+    .input input{
+        width: 60%;
+    }
+
 }
 
