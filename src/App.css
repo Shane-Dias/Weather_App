@@ -1,3 +1,103 @@
-/* *{
-    border: 1px solid red;
-} */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1.3rem;
+  font-weight: 500;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.container {
+  width: 50vw;
+  max-height: 70vh;
+  margin: auto;
+  padding: 0.8rem 0px;
+  background: linear-gradient(180deg, rgb(104, 144, 226), rgb(232, 186, 101));
+  border: none;
+  box-shadow: 0px 0px 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.input button,
+.input input {
+  font-size: 1.1rem;
+}
+
+.cityname {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.output {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  margin: 24px 0;
+}
+
+.temp {
+  display: flex;
+}
+
+.wind-visibility {
+  display: flex;
+}
+
+button {
+  margin-left: 10px;
+  padding: 4px;
+  border-radius: 4px;
+  border: none;
+  background-color: rgb(195, 208, 184);
+  cursor: pointer;
+  transition: all 0.6s;
+}
+button:hover {
+  background-color: rgba(0, 255, 255, 0.296);
+}
+input[type="text"] {
+  border-radius: 4px;
+  border: 2px solid rgba(152, 147, 147, 0.413);
+  padding: 4px;
+  padding-left: 8px;
+}
+
+.desc p {
+  text-transform: capitalize;
+  font-style: italic;
+}
+
+@media (max-width: 950px) {
+    .container{
+        width: 100vw;
+        max-height: 100vh;
+    }
+}
+@media (max-width: 490px) {
+    .temp{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .wind-visibility{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
