@@ -1,2 +1,3 @@
-Weather App using React(Error Handling pending)
+Weather App using React
+
 url:https://main--searchcityweathers.netlify.app/
