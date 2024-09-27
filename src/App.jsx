@@ -5,19 +5,31 @@ import "./App.css";
 const App = () => {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState(null); // Stores the weather data
-  const apikey = "6a1e90f3f6eb5aa5d6838f1bf94b60c6";
-
+  const [errormsg, setErrormsg] = useState("")
+  const [loading, setLoading] = useState(false)
+  const apikey= import.meta.env.VITE_API_KEY
   const weatherdata = async () => {
+    setLoading(true)
     try {
       const fetchdata = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}&units=metric`
       );
-      const data = await fetchdata.json();
-      setWeather(data);
-      console.log(data);
-      // console.log(fetchdata)
+      if (fetchdata.ok) {
+        const data = await fetchdata.json();
+        setWeather(data);
+        setErrormsg("")
+        console.log(data);
+        console.log(fetchdata)
+      }
+      else{
+        setWeather(null)
+        setErrormsg("You have entered an invaild city name.")
+      }
     } catch (error) {
-      console.error(`Some error occured:${error}`);
+      setErrormsg("Something went wrong while fetching data")
+    }
+    finally{
+      setLoading(false)
     }
   };
   // useEffect(() => {
@@ -41,13 +53,15 @@ const App = () => {
               placeholder="Enter city name"
               value={city}
               onChange={handleChange}
+              disabled={loading}
             />
-            <button type="button" onClick={handleClick}>
-              Enter
+            <button type="button" onClick={handleClick} disabled={loading}>
+              {loading?<div className="loader"></div>:"Enter"}
             </button>
           </div>
           <div className="weatherdata">
-            <div className="cityname">{city.toUpperCase()}</div>
+            {weather && <div className="cityname">{weather.name.toUpperCase()}</div>}
+            {errormsg && <div className="error">{errormsg}</div>}
             {weather && (
               <div className="output">
                 <div className="temp">
@@ -60,7 +74,7 @@ const App = () => {
                   <p>Humidity:{weather.main.humidity}%</p>
                 </div>
                 <div className="pressure">
-                  <p>Pressure:{weather.main.pressure} hPa</p>
+                  <p>Air Pressure:{weather.main.pressure} hPa</p>
                 </div>
                 <div className="desc">
                   <p>{weather.weather[0].description}.</p>

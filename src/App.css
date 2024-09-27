@@ -6,6 +6,26 @@
   font-weight: 500;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(45deg, #edff02, #9595e9, #c4faed, #ff9c02);
+  background-size: 300% 300%;
+  animation: gradientAnimation 7s ease infinite;
+  animation-direction: reverse;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 .container {
   width: 50vw;
   max-height: 70vh;
@@ -67,6 +87,22 @@ button {
   cursor: pointer;
   transition: all 0.6s;
 }
+.loader {
+  width: 30px;
+  padding: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #25b09b;
+  --_m: 
+    conic-gradient(#0000 10%,#000),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  -webkit-mask-composite: source-out;
+          mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {to{transform: rotate(1turn)}}
 button:hover {
   background-color: rgba(0, 255, 255, 0.296);
 }
@@ -106,3 +142,7 @@ input[type="text"] {
 
 }
 
+.error{
+  padding: 2px;
+  text-align: center;
+}
